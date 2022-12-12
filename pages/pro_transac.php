@@ -8,7 +8,7 @@ include'../includes/connection.php';
               $name = $_POST['name'];
               $desc = $_POST['description'];
               $qty = $_POST['quantity'];
-              $oh = $_POST['onhand'];
+              // $oh = $_POST['onhand'];
               $pr = $_POST['price']; 
               $cat = $_POST['category'];
               $supp = $_POST['supplier'];
@@ -18,8 +18,8 @@ include'../includes/connection.php';
                 case 'add':  
                 for($i=0; $i < $qty; $i++){
                     $query = "INSERT INTO product
-                              (PRODUCT_ID, PRODUCT_CODE, NAME, DESCRIPTION, QTY_STOCK, ON_HAND, PRICE, CATEGORY_ID, SUPPLIER_ID, DATE_STOCK_IN)
-                              VALUES (Null,'{$pc}','{$name}','{$desc}',1,1,{$pr},{$cat},{$supp},'{$dats}')";
+                              (PRODUCT_ID, PRODUCT_CODE, NAME, DESCRIPTION, QUANTITY, PRICE, CATEGORY_ID, SUPPLIER_ID, DATE_STOCK_IN)
+                              VALUES (Null,'{$pc}','{$name}','{$desc}',{$pr},{$cat},{$supp},'{$dats}')";
                     mysqli_query($db,$query)or die ('Error in updating product in Database '.$query);
                     }
                 break;

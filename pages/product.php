@@ -118,14 +118,14 @@ include'../includes/footer.php';
              <input class="form-control" placeholder="Name" name="name" required>
            </div>
            <div class="form-group">
-             <textarea rows="5" cols="50" texarea" class="form-control" placeholder="Description" name="description" required></textarea>
+             <textarea rows="5" cols="50" texarea="" class="form-control" placeholder="Description" name="description" required></textarea>
            </div>
            <div class="form-group">
              <input type="number"  min="1" max="999999999" class="form-control" placeholder="Quantity" name="quantity" required>
            </div>
-           <div class="form-group">
+           <!-- <div class="form-group">
              <input type="number"  min="1" max="999999999" class="form-control" placeholder="On Hand" name="onhand" required>
-           </div>
+           </div> -->
            <div class="form-group">
              <input type="number"  min="1" max="9999999999" class="form-control" placeholder="Price" name="price" required>
            </div>

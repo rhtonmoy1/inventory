@@ -36,7 +36,7 @@ $query2 = 'SELECT NAME FROM product p join category c on p.CATEGORY_ID=c.CATEGOR
                      <th>Product Code</th>
                      <th>Name</th>
                      <th>Quantity</th>
-                     <th>On Hand</th>
+                    
                      <th>Category</th>
                      <th>Supplier</th>
                      <th>Date Stock In</th>
@@ -46,14 +46,14 @@ $query2 = 'SELECT NAME FROM product p join category c on p.CATEGORY_ID=c.CATEGOR
           <tbody>
 
 <?php   
-$query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, QTY_STOCK, ON_HAND, CNAME, COMPANY_NAME, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID JOIN supplier s ON p.SUPPLIER_ID=s.SUPPLIER_ID where PRODUCT_CODE ='.$_GET['id'];
+$query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, QUANTITY, CNAME, COMPANY_NAME, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID JOIN supplier s ON p.SUPPLIER_ID=s.SUPPLIER_ID where PRODUCT_CODE ='.$_GET['id'];
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<tr>';
                 echo '<td>'. $row['PRODUCT_CODE'].'</td>';
                 echo '<td>'. $row['NAME'].'</td>';
-                echo '<td>'. $row['QTY_STOCK'].'</td>';
-                echo '<td>'. $row['ON_HAND'].'</td>';
+                echo '<td>'. $row['QUANTITY'].'</td>';
+              
                 echo '<td>'. $row['CNAME'].'</td>';
                 echo '<td>'. $row['COMPANY_NAME'].'</td>';
                 echo '<td>'. $row['DATE_STOCK_IN'].'</td>';

@@ -27,7 +27,7 @@ include'../includes/sidebar.php';
             <a href="product.php?action=add" type="button" class="btn btn-primary bg-gradient-primary btn-block"> <i class="fas fa-flip-horizontal fa-fw fa-share"></i> Back</a>
             <div class="card-body">
           <?php 
-            $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME,DESCRIPTION, COUNT(`QTY_STOCK`) AS "QTY_STOCK", COUNT(`ON_HAND`) AS "ON_HAND",PRICE, c.CNAME FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID WHERE PRODUCT_CODE ='.$_GET['id'];
+            $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, DESCRIPTION, QUANTITY,PRICE, c.CNAME FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID WHERE PRODUCT_CODE ='.$_GET['id'];
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
               while($row = mysqli_fetch_array($result))
               {   
@@ -116,7 +116,7 @@ include'../includes/sidebar.php';
                      <th>Product Code</th>
                      <th>Name</th>
                      <th>Quantity</th>
-                     <th>On Hand</th>
+                  
                      <th>Category</th>
                      <th>Supplier</th>
                      <th>Date Stock In</th>
@@ -125,7 +125,7 @@ include'../includes/sidebar.php';
           <tbody>
 
 <?php                  
-    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, COUNT("QTY_STOCK") AS QTY_STOCK, COUNT("ON_HAND") AS ON_HAND, CNAME, COMPANY_NAME, p.SUPPLIER_ID, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID JOIN supplier s ON p.SUPPLIER_ID=s.SUPPLIER_ID where PRODUCT_CODE ='.$zzz.' GROUP BY `SUPPLIER_ID`, `DATE_STOCK_IN`';
+    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, QUANTITY, CNAME, COMPANY_NAME, p.SUPPLIER_ID, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID JOIN supplier s ON p.SUPPLIER_ID=s.SUPPLIER_ID where PRODUCT_CODE ='.$zzz.' GROUP BY `SUPPLIER_ID`, `DATE_STOCK_IN`';
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
       
             while ($row = mysqli_fetch_assoc($result)) {
@@ -133,8 +133,8 @@ include'../includes/sidebar.php';
                 echo '<tr>';
                 echo '<td>'. $row['PRODUCT_CODE'].'</td>';
                 echo '<td>'. $row['NAME'].'</td>';
-                echo '<td>'. $row['QTY_STOCK'].'</td>';
-                echo '<td>'. $row['ON_HAND'].'</td>';
+                echo '<td>'. $row['QUANTITY'].'</td>';
+              
                 echo '<td>'. $row['CNAME'].'</td>';
                 echo '<td>'. $row['COMPANY_NAME'].'</td>';
                 echo '<td>'. $row['DATE_STOCK_IN'].'</td>';
