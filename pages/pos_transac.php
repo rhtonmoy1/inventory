@@ -23,6 +23,11 @@ session_start();
                   {
                     // echo "'{$today}', '".$_POST['name'][$i-1]."', '".$_POST['quantity'][$i-1]."', '".$_POST['price'][$i-1]."', '{$emp}', '{$rol}' <br>";
 
+                    echo  $_POST["quantity"];
+
+                    $Query1 = "DELETE FROM product WHERE NAME = '".$_POST['name'][$i-1]."' LIMIT ".$_POST['quantity'][$i-1];
+                    mysqli_query($db,$Query1)or die (mysqli_error($db));
+                    
                     $query = "INSERT INTO `transaction_details`
                                (`ID`, `TRANS_D_ID`, `PRODUCTS`, `QTY`, `PRICE`, `EMPLOYEE`, `ROLE`)
                                VALUES (Null, '{$today}', '".$_POST['name'][$i-1]."', '".$_POST['quantity'][$i-1]."', '".$_POST['price'][$i-1]."', '{$emp}', '{$rol}')";
